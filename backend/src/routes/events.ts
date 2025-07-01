@@ -1,12 +1,11 @@
 import express from 'express';
-import Event from '../models/Event';               // Import the Event model
-
+import Event from '../models/Event';              
 const router = express.Router();
 
-// POST /api/events - Bulk insert events
+
 router.post('/events', async (req, res) => {
   try {
-    await Event.insertMany(req.body);             // Insert all received events
+    await Event.insertMany(req.body);            
     res.status(200).send("Events stored");
   } catch (err) {
     console.error(err);
@@ -14,7 +13,7 @@ router.post('/events', async (req, res) => {
   }
 });
 
-// GET /api/analytics - Return aggregated analytics
+
 router.get('/analytics', async (req, res) => {
   try {
     const { userId, page } = req.query;
